@@ -10,36 +10,7 @@ void dropBook();
 int main() {
 
 	InitEV3();
-		/*
-		 --!!!--- TESTA TOUCH-SENSOR SAMTIDIGT SOM FORWARD ---!!!---
-		 	       	   DENNA KOD FUNKAR EJ! snälla få den att funka:(</3
-				   
-		setAllSensorMode(TOUCH_PRESS, NO_SEN, TOUCH_PRESS, US_DIST_MM);
-		int rightSensor = readSensor(IN_1);
-		int leftSensor = readSensor(IN_3);
-		while (rightSensor && leftSensor != 1) {
-		    LcdPrintf(1, "Going Forward!\n");
-		    OnRevSync(OUT_AB,30);
-			if (rightSensor && leftSensor == 1) {
-				Off(OUT_AB);
-				LcdPrintf(1, "Båda touch sensor");
-				Wait(SEC_1);
-			}
-			else if(rightSensor == 1) {
-				Off(OUT_A);
-				LcdPrintf(1, "Höger touch sensor");
-				Wait(SEC_1);
-			}
-			else if (leftSensor == 1) {
-				Off(OUT_B);
-				LcdPrintf(1, "Vänster touch sensor");
-				Wait(SEC_1);
-			}
-			else {
-				LcdPrintf(1, "Ingen touch sensor");
-				Wait(SEC_1);
-			}
-		}*/
+
 
 
 //DETTA SKA EJ ÄNDRAS
@@ -48,7 +19,7 @@ int main() {
 
 
     for(i = 0; i <= indexTid; i++) {
-        rotateMotor(i);
+        spinRobot45(i);
     }
 	
     Off(OUT_AB);
@@ -124,6 +95,38 @@ void forward() {
 
 //denna funktion funkar om man kan köra denna + forward() samtidigt i main + stoppa motor i forward() i main
 void touchSensor() {
+
+	/*
+			 --!!!--- TESTA TOUCH-SENSOR SAMTIDIGT SOM FORWARD ---!!!---
+			 	       	   DENNA KOD FUNKAR EJ! snälla få den att funka:(</3
+
+			setAllSensorMode(TOUCH_PRESS, NO_SEN, TOUCH_PRESS, US_DIST_MM);
+			int rightSensor = readSensor(IN_1);
+			int leftSensor = readSensor(IN_3);
+			while (rightSensor && leftSensor != 1) {
+			    LcdPrintf(1, "Going Forward!\n");
+			    OnRevSync(OUT_AB,30);
+				if (rightSensor && leftSensor == 1) {
+					Off(OUT_AB);
+					LcdPrintf(1, "Båda touch sensor");
+					Wait(SEC_1);
+				}
+				else if(rightSensor == 1) {
+					Off(OUT_A);
+					LcdPrintf(1, "Höger touch sensor");
+					Wait(SEC_1);
+				}
+				else if (leftSensor == 1) {
+					Off(OUT_B);
+					LcdPrintf(1, "Vänster touch sensor");
+					Wait(SEC_1);
+				}
+				else {
+					LcdPrintf(1, "Ingen touch sensor");
+					Wait(SEC_1);
+				}
+			}*/
+
 	setAllSensorMode(TOUCH_PRESS, NO_SEN, TOUCH_PRESS, US_DIST_MM);
 		int rightSensor = readSensor(IN_1);
 		int leftSensor = readSensor(IN_3);
@@ -177,7 +180,7 @@ void touchSensor() {
 			//else fortsätt forward()
 }
 
-dropBook () {
+void dropBook () {
 	 LcdPrintf(1,"Use the hand\n");
 		 RotateMotor(OUT_C, 10, 90); //funkar 90 grader?
 		 Wait(SEC_2);
