@@ -83,7 +83,6 @@ int findMinDistance () {
     int arrayDis[8];
     int indexTidForMinDis;
     int j;
-    int k;
 
     setAllSensorMode(TOUCH_PRESS, NO_SEN, TOUCH_PRESS, US_DIST_MM);
 
@@ -95,12 +94,12 @@ int findMinDistance () {
     }
 
     minDis = arrayDis[0];
-    for(k = 1; k<8; k++)
+    for(j = 1; j<8; j++)
     {
-        if(minDis > arrayDis[k])
+        if(minDis > arrayDis[j])
         {
-            //minDis = arrayDis[k];
-            indexTidForMinDis = k;
+            minDis = arrayDis[j];
+            indexTidForMinDis = j;
         }
     }
 
