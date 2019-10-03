@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <ev3.h>
 
-void rotateMotor(int l);
+void rotateRobot(int l);
 int findMinDistance();
 void forward();
 void touchSensor();
@@ -16,7 +16,7 @@ int main()
     int i;
 
     for(i = 0; i < indexTid; i++) {
-        rotateMotor(i);
+        rotateRobot(i);
     }
 
     Off(OUT_AB);
@@ -39,7 +39,7 @@ int findMinDistance () {
     setAllSensorMode(TOUCH_PRESS, NO_SEN, TOUCH_PRESS, US_DIST_MM);
 
     for(j = 0; j < 9; j++) {
-        rotateMotor(j);
+        rotateRobot(j);
         distance = readSensor(IN_4);
         arrayDis[j] = distance;
         LcdPrintf(1, "Avståndet Är: %d mm", arrayDis[j]);
@@ -58,7 +58,7 @@ int findMinDistance () {
     return indexTidForMinDis;
 }
 
-void rotateMotor (int l) {
+void rotateRobot (int l) {
     LcdPrintf(1, "Turn Right! %d \n", l);
     OnFwdReg(OUT_A, 15);
     OnRevReg(OUT_B, 15);
