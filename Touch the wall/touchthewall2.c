@@ -32,7 +32,7 @@ int main()
 int findMinDistance () {
     int distance;
     int minDis;
-    int arrayDis[8];
+    int arrayDis[15];
     int indexTidForMinDis;
     int j;
     int k;
