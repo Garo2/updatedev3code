@@ -5,6 +5,7 @@ void rotateRobot(int l);
 int findMinDistance();
 void forward();
 void touchSensor();
+void rotateRobot();
 
 
 int main()
@@ -38,7 +39,7 @@ int findMinDistance () {
 
     setAllSensorMode(TOUCH_PRESS, NO_SEN, TOUCH_PRESS, US_DIST_MM);
 
-    for(j = 0; j < 9; j++) {
+    for(j = 0; j < 16; j++) {
         rotateRobot(j);
         distance = readSensor(IN_4);
         arrayDis[j] = distance;
@@ -46,11 +47,11 @@ int findMinDistance () {
     }
 
     minDis = arrayDis[0];
-    for(k = 1; k<8; k++)
+    for(k = 1; k<=15; k++)
     {
         if(minDis > arrayDis[k])
         {
-            //minDis = arrayDis[k];
+            minDis = arrayDis[k];
             indexTidForMinDis = k;
         }
     }
