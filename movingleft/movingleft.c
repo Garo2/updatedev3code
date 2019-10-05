@@ -6,7 +6,7 @@ int findMinDistance();
 void forward();
 void touchSensor();
 void dropBook();
-void backward90left();
+void backward90right();
 void forward25();
 void rotate180();
 
@@ -31,7 +31,7 @@ int main()
 
    touchSensor();
 
-   backward90left();
+   backward90right();
 
    forward25();
 
@@ -81,7 +81,7 @@ void rotateRobot() {
 }
 
 void forward() {
-	//framÃ¥t X m
+	//framåt X m
     LcdPrintf(1, "Going Forward!\n");
     OnFwdSync(OUT_AB,50);
 }
@@ -147,11 +147,11 @@ void dropBook() {
 	 LcdPrintf(1,"Use the hand\n");
 		 RotateMotor(OUT_C, 10, 90); //funkar 90 grader?
 		 Wait(SEC_1);
-		 RotateMotor(OUT_C, -10, 90); //onÃ¶digt men fÃ¶r att fÃ¥ tillbaka armen pÃ¥ ursprunglig plats (ser snyggt ut)
+		 RotateMotor(OUT_C, -10, 90); //onödigt men för att få tillbaka armen på ursprunglig plats (ser snyggt ut)
 }
-void backward90left()
+void backward90right()
 {
-	OnRevReg(OUT_A, 23);
+	OnRevReg(OUT_B, 23);
 	Wait(2500);
 	Off(OUT_AB);
 }
@@ -164,57 +164,8 @@ void forward25()
 }
 void rotate180()
 {
-	OnFwdReg(OUT_A, 15);
-	OnRevReg(OUT_B, 15);
+	OnFwdReg(OUT_B, 15);
+	OnRevReg(OUT_A, 15);
 	Wait(3360);
 	Off(OUT_AB);
 }
-	/*setAllSensorMode(TOUCH_PRESS, NO_SEN, TOUCH_PRESS, US_DIST_MM);
-		readSensor(IN_1);
-		readSensor(IN_3);
-			if(readSensor(IN_1) == 1){
-				LcdPrintf(1,"Turn Right!n");
-				OnRevSync(OUT_B,23);
-				Wait(SEC_7 + MS_500);
-
-				if(readSensor(IN_1) && readSensor(IN_3) == 1){
-					Off(OUT_B);
-					 LcdPrintf(1, "Going Backward!\n");
-					    OnFwdSync(OUT_AB,75);
-					    Wait(SEC_4);
-
-					 LcdPrintf(1, "Turn 90 degrees!\n");
-					    OnFwdReg(OUT_A, 44);
-					    Wait(SEC_3 + MS_700 + MS_50);
-				}
-			}
-			else if(readSensor(IN_3) == 1){
-					LcdPrintf(1,"Turn Left!\n");
-					OnRevSync(OUT_A,23);
-					Wait(SEC_7 + MS_500);
-
-					if(readSensor(IN_1) && readSensor(IN_3) == 1){
-						Off(OUT_B);
-						 LcdPrintf(1, "Going Backward!\n");
-						   OnFwdSync(OUT_AB,75);
-						   Wait(SEC_4);
-
-						 LcdPrintf(1, "Turn 90 degrees!\n");
-							OnFwdReg(OUT_A, 44);
-							Wait(SEC_3 + MS_700 + MS_50);
-					}
-			}
-
-			if(readSensor(IN_1) && readSensor(IN_3) == 1)
-				{
-					Off(OUT_AB);
-					 LcdPrintf(1, "Going Backward!\n");
-					  OnFwdSync(OUT_AB,75);
-					  Wait(SEC_4);
-
-					 LcdPrintf(1, "Turn 90 degrees!");
-					   OnFwdReg(OUT_A, 44);
-					   Wait(SEC_3 + MS_700 + MS_50);
-				}
-}
-*/
