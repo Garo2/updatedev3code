@@ -7,25 +7,25 @@ void forward();
 void touchSensor();
 void dropBook();
 void backward90left();
+void backward90right();
 void forward25();
-void rotate180();
+void rotate90();
 
 
 
 int main()
 {
 
-	InitEV3();
-	// setAllSensorMode(TOUCH_PRESS, NO_SEN, TOUCH_PRESS, US_DIST_MM);
-    int indexTid = findMinDistance();
-    int i;
-    LcdPrintf(1,"Going to %d", indexTid);
+   InitEV3();
+   int indexTid = findMinDistance();
+   int i;
+   LcdPrintf(1,"Going to %d", indexTid);
 
-    for(i = 0; i <= indexTid; i++) {
+   for(i = 0; i <= indexTid; i++) {
     	rotateRobot();
     }
 
-    Off(OUT_AB);
+   Off(OUT_AB);
 
    forward();
 
@@ -35,7 +35,15 @@ int main()
 
    forward25();
 
-   rotate180();
+   Off(OUT_AB);
+
+   backward90right();
+
+   forward();
+
+   touchSensor();
+
+   rotate90();
 
    dropBook();
 
@@ -45,14 +53,14 @@ int main()
 int findMinDistance () {
     int distance;
     int minDis;
-    int arrayDis[15];
+    int arrayDis[64];
     int indexTidForMinDis;
     int j;
     int k;
 
     setAllSensorMode(TOUCH_PRESS, NO_SEN, TOUCH_PRESS, US_DIST_MM);
 
-    for(j = 0; j < 16; j++) {
+    for(j = 0; j < 64; j++) {
         rotateRobot(j);
         distance = readSensor(IN_4);
         arrayDis[j] = distance;
@@ -60,7 +68,7 @@ int findMinDistance () {
     }
 
     minDis = arrayDis[0];
-    for(k = 1; k<=15; k++)
+    for(k = 1; k<=63; k++)
     {
         if(minDis > arrayDis[k])
         {
@@ -76,14 +84,14 @@ void rotateRobot() {
 
     OnFwdReg(OUT_A, 15);
     OnRevReg(OUT_B, 15);
-    Wait(420);
+    Wait(105);
 
 }
 
 void forward() {
 	//framåt X m
     LcdPrintf(1, "Going Forward!\n");
-    OnFwdSync(OUT_AB,50);
+    OnFwdSync(OUT_AB,55);
 }
 
 void touchSensor()
@@ -102,43 +110,30 @@ void touchSensor()
 
 				if (rightSens == 1 && leftSens==1)
 				{
-					Wait(100);
+					Wait(SEC_1);
 					Off(OUT_AB);
 					break;
 				}
 				if (rightSens==1)
-				{
+				{ Off(OUT_AB);
+
+					OnFwdReg(OUT_B, 50);
+					Wait(SEC_3);
 					Off(OUT_AB);
+					break;
 
-					OnFwdReg(OUT_B, 30);
-					Wait(SEC_1);
 
-					rightSens = readSensor(IN_1);
-					leftSens = readSensor(IN_3);
-
-					if (rightSens==1 && leftSens==1)
-					{
-						Wait(100);
-						Off(OUT_AB);
-						break;
-					}
 				}
 				if (leftSens==1)
 				{
 					Off(OUT_AB);
 
-					OnFwdReg(OUT_A, 30);
-					Wait(SEC_1);
+					OnFwdReg(OUT_A, 50);
+					Wait(SEC_3);
+					Off(OUT_AB);
+					break;;
 
-					rightSens = readSensor(IN_1);
-					leftSens = readSensor(IN_3);
 
-					if (rightSens==1 && leftSens==1)
-					{
-						Wait(100);
-						Off(OUT_AB);
-						break;
-					}
 				}
 
 	}
@@ -155,17 +150,26 @@ void backward90left()
 	Wait(2500);
 	Off(OUT_AB);
 }
+
+void backward90right()
+{
+	OnRevReg(OUT_B, 23);
+	Wait(2500);
+	Off(OUT_AB);
+}
+
+
 void forward25()
 {
 	Off(OUT_AB);
 	OnFwdSync(OUT_AB, 50);
-	Wait(SEC_10+111);
+	Wait(SEC_10+1111);
 	Off(OUT_AB);
 }
-void rotate180()
+void rotate90()
 {
 	OnFwdReg(OUT_A, 15);
 	OnRevReg(OUT_B, 15);
-	Wait(3360);
+	Wait(1680);
 	Off(OUT_AB);
 }
