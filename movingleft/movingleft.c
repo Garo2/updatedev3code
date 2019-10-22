@@ -54,7 +54,7 @@ int main()
 
 int findMinDistance () {
 /*
- Vera
+ Vera, updaterad av Garo
 */
     int distance;
     int minDis;
@@ -153,7 +153,7 @@ void touchSensor()
 }
 void dropBook() {
 /*
- Garo
+ Vera
 */
 	 LcdPrintf(1,"Use the hand\n");
 		 RotateMotor(OUT_C, 10, 90); //funkar 90 grader?
