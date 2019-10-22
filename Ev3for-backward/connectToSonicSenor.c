@@ -73,3 +73,6 @@ void forward() {
     Wait(SEC_20);
 }
 
+/*
+ Vera skrev koden
+*/
