@@ -16,6 +16,9 @@ void rotate180();
 
 int main()
 {
+/* 
+Garo och Vera
+*/
 
 	InitEV3();
     int indexTid = findMinDistance();
@@ -58,6 +61,9 @@ int main()
 }
 
 int findMinDistance () {
+/* 
+Vera, uppdaterad av Garo
+*/
     int distance;
     int minDis;
     int arrayDis[64];
@@ -88,6 +94,9 @@ int findMinDistance () {
 }
 
 void rotateRobot() {
+/* 
+Garo
+*/	
 
     OnFwdReg(OUT_A, 15);
     OnRevReg(OUT_B, 15);
@@ -96,13 +105,19 @@ void rotateRobot() {
 }
 
 void forward() {
-	//framåt X m
+/* 
+Garo
+*/
+	//framÃ¥t X m
     LcdPrintf(1, "Going Forward!\n");
     OnFwdSync(OUT_AB,55);
 }
 
 void touchSensor()
 {
+/* 
+Rebecca, uppdaterad av Garo
+*/
 	setAllSensorMode(TOUCH_PRESS, NO_SEN, TOUCH_PRESS, US_DIST_MM);
 		int rightSens = readSensor(IN_1);
 		int leftSens = readSensor(IN_3);
@@ -146,25 +161,37 @@ void touchSensor()
 	}
 }
 void dropBook() {
+/* 
+Vera
+*/
 	 LcdPrintf(1,"Use the hand\n");
 		 RotateMotor(OUT_C, 10, 90); //funkar 90 grader?
 		 Wait(SEC_1);
-		 RotateMotor(OUT_C, -10, 90); //onödigt men för att få tillbaka armen på ursprunglig plats (ser snyggt ut)
+		 RotateMotor(OUT_C, -10, 90); //onÃ¶digt men fÃ¶r att fÃ¥ tillbaka armen pÃ¥ ursprunglig plats (ser snyggt ut)
 }
 void backward90left()
 {
+/* 
+Garo
+*/
 	OnRevReg(OUT_A, 23);
 	Wait(2500);
 	Off(OUT_AB);
 }
 void backward90right()
 {
+/* 
+Garo
+*/
 	OnRevReg(OUT_B, 23);
 	Wait(2500);
 	Off(OUT_AB);
 }
 void forward25()
 {
+/* 
+Garo
+*/
 	Off(OUT_AB);
 	OnFwdSync(OUT_AB, 50);
 	Wait(SEC_10+1111);
@@ -172,6 +199,9 @@ void forward25()
 }
 void rotate90()
 {
+/* 
+Garo
+*/
 	OnFwdReg(OUT_B, 15);
 	OnRevReg(OUT_A, 15);
 	Wait(1750);
@@ -180,6 +210,9 @@ void rotate90()
 
 void rotate180()
 {
+/* 
+Garo
+*/
 	OnRevSync(OUT_AB, 20);
 	Wait(SEC_1);
 	Off(OUT_AB);
