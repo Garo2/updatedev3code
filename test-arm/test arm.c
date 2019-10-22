@@ -9,6 +9,9 @@
 
 int main(void)
 {
+/* 
+Garo
+*/
 	//TODO Place here your variables
 
 	InitEV3();
