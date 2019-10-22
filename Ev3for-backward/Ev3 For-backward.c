@@ -36,7 +36,7 @@ int moving()
 	OnRevReg(OUT_B,50);
 	Wait(SEC_2);
 
-	LcdPrintf(1,"Turn Left!\n"); //Lite kommentar för test
+	LcdPrintf(1,"Turn Left!\n"); //Lite kommentar fÃ¶r test
 	OnFwdReg(OUT_B,50);
 	OnRevReg(OUT_A,50);
 	Wait(SEC_2);
@@ -46,3 +46,6 @@ int moving()
 	Wait(SEC_1);
 	return 0;
 }
+/*
+ Garo
+*/
