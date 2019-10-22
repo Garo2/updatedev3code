@@ -97,7 +97,7 @@ void rotateRobot() {
 
 void forward() {
 /*
- Vera
+ Garo
 */
 	//framåt X m
     LcdPrintf(1, "Going Forward!\n");
